@@ -1,5 +1,12 @@
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
+
 function App() {
-  return <div>Hello Worl d...!</div>;
+  return (
+    <Suspense>
+      <Outlet />
+    </Suspense>
+  );
 }
 
 export default App;

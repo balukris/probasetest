@@ -18,5 +18,17 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'import/no-extraneous-dependencies': 'off',
   },
+  overrides: [
+    {
+      files: ['*.test.jsx', 'setupTests.js'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+      },
+      env: {
+        jest: true,
+      },
+    },
+  ],
 };
