@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "prepare": "husky install",
     "test": "vitest",
-    "serve-json": "json-server --watch db.json --port 4000"
+    "serve-json": "json-server --delay 3000 --watch db.json --port 4000"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.32.6",
