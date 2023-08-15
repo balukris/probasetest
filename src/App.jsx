@@ -1,10 +1,13 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import AppContext from './components/wallet/AppContext';
 
 function App() {
   return (
     <Suspense>
-      <Outlet />
+      <AppContext>
+        <Outlet />
+      </AppContext>
     </Suspense>
   );
 }
