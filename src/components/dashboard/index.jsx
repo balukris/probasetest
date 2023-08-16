@@ -1,17 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
-import fetchDashboardData from './queries';
+import useDashboardFetch from '../hooks/useDashboardFetch';
 import WalletButtons from '../wallet/walletButton';
 
 function Dashboard() {
-  const { data, isError, error } = useQuery(
-    ['get', 'dashboard'],
-    fetchDashboardData,
-    {
-      enabled: false,
-    }
-  );
-
   const {
     connected,
     disconnect,
@@ -24,6 +15,10 @@ function Dashboard() {
     // signMessage,
     // signMessageAndVerify,
   } = useWallet();
+
+  const { data, isError, error, refetch } = useDashboardFetch({
+    enabled: false,
+  });
 
   return (
     <div>
@@ -38,6 +33,9 @@ function Dashboard() {
           Disconnect
         </button>
       ) : null}
+      <button onClick={refetch} type="button">
+        Fetch Data
+      </button>
     </div>
   );
 }

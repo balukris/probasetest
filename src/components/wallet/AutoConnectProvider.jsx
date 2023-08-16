@@ -1,24 +1,19 @@
-import { useEffect, useState, createContext, useContext, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import AutoConnectContext from '../context/AutoConnectContext';
 
 const AUTO_CONNECT_LOCAL_STORAGE_KEY = 'AptosWalletAutoConnect';
 
-export const AutoConnectContext = createContext({});
-
-export function useAutoConnect() {
-  return useContext(AutoConnectContext);
-}
-
-export function AutoConnectProvider({ children }) {
+export default function AutoConnectProvider({ children }) {
   const [autoConnect, setAutoConnect] = useState(() => {
     try {
       const isAutoConnect = localStorage.getItem(
         AUTO_CONNECT_LOCAL_STORAGE_KEY
       );
       if (isAutoConnect) return JSON.parse(isAutoConnect);
-    } catch (e) {
+    } catch (error) {
       if (typeof window !== 'undefined') {
-        console.error(e);
+        console.error(error);
       }
     }
     return null;

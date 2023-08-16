@@ -1,10 +1,12 @@
+import { useContext } from 'react';
 import { PetraWallet } from 'petra-plugin-wallet-adapter';
 import PropTypes from 'prop-types';
 import { AptosWalletAdapterProvider } from '@aptos-labs/wallet-adapter-react';
-import { AutoConnectProvider, useAutoConnect } from './AutoConnectProvider';
+import AutoConnectProvider from './AutoConnectProvider';
+import AutoConnectContext from '../context/AutoConnectContext';
 
 function WalletContextProvider({ children }) {
-  const { autoConnect } = useAutoConnect();
+  const { autoConnect } = useContext(AutoConnectContext);
 
   const wallets = [new PetraWallet()];
 

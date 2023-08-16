@@ -19,6 +19,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'import/no-extraneous-dependencies': 'off',
+    'no-console': 'off',
   },
   overrides: [
     {
